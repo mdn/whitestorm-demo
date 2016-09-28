@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Whitestorm example</title>
+  </head>
+  <body>
+    
+  </body>
+  <script src="whitestorm.js"></script>
+  <script>
+    const world = new WHS.World({
+      stats: 'fps',
+      autoresize: "window", // Call autoresize when app window is resized.
+
+      gravity: {
+        x: 0,
+        y: -5,
+        z: 0
+      },
+
+      camera: {
+        z: 50
+      },
+
+      container: document.body
+    }); 
+
+    const sphere = new WHS.Sphere({ // Create sphere object. 
+      geometry: { // Create a THREE.SphereGeometry(3)
+        radius: 10
+      },
+
+      mass: 10, // Mass of physical object.
+
+      material: { // Material
+        color: 0xff0000,
+        kind: 'phong' // THREE.MeshBasicMaterial
+      },
+
+      pos: { // Position vector.
+        x: 0,
+        y: 10,
+        z: 0
+      }
+    }); 
+
+    const cube = new WHS.Box({
+      geometry: {
+        width: 10,
+        height: 10,
+        depth: 10
+      },
+
+      mass: 0,
+
+      material: {
+        kind: 'phong',
+        color: 0x0095DD
+      },
+
+      pos: {
+        x: -20,
+        y: 10,
+        z: 0
+      },
+
+      rot: {
+        x: 0.75,
+        y: 1
+      }
+    }); 
+
+
+    const light = new WHS.DirectionalLight( {
+      light: {
+        color: 0xffffff,
+        intensity: 2
+      },
+
+      pos: {
+        x: 0,
+        y: 0,
+        z: 50
+      }
+    });
+
+
+    sphere.addTo(world); // Add Sphere to world.
+    cube.addTo(world); // Add cube to the world.
+    light.addTo(world); // Add light to the world. 
+    world.start(); // Start animations and physics simulation.
+  </script>
+</html>
