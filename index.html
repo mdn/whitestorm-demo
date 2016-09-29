@@ -28,7 +28,9 @@
 
     const sphere = new WHS.Sphere({ // Create sphere object. 
       geometry: { // Create a THREE.SphereGeometry(3)
-        radius: 10
+        radius: 10,
+        widthSegments: 32,
+        heightSegments: 32
       },
 
       mass: 10, // Mass of physical object.
